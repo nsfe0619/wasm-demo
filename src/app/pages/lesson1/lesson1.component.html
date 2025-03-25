@@ -1,2 +1,19 @@
-<h2>📗 Lesson 1 - WebAssembly 簡介</h2>
-<p>這是第一課，將會學習如何在 Angular 中整合 AssemblyScript。</p>
+<h2>📗 Lesson 1 - WASM 加法器</h2>
+
+<div class="form">
+  <label>
+    數字 A：
+    <input type="number" [(ngModel)]="a" />
+  </label>
+
+  <label>
+    數字 B：
+    <input type="number" [(ngModel)]="b" />
+  </label>
+
+  <button (click)="calculate()">計算</button>
+</div>
+
+<div class="result" *ngIf="result !== null">
+  結果：{{ result }}
+</div>
