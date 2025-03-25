@@ -1,0 +1,14 @@
+{
+  "entry": "assembly/index.ts",
+  "targets": {
+    "release": {
+      "outFile": "../src/assets/add.wasm",
+      "optimizeLevel": 3,
+      "shrinkLevel": 1
+    },
+    "debug": {
+      "outFile": "../src/assets/add.debug.wasm",
+      "debug": true
+    }
+  }
+}
