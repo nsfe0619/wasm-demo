@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class WasmService {
-  private instance: WebAssembly.Instance | null = null;
-  private loadPromise: Promise<void> | null = null;
+  private instance: WebAssembly.Instance | null = null; // 儲存已載入的 WASM 模組實例
+  private loadPromise: Promise<void> | null = null; // 避免重複載入 .wasm，確保只有一次載入
 
   /**
    * 第一次載入 .wasm 檔案
@@ -28,7 +28,7 @@ export class WasmService {
   /**
    * 自動載入 + 計算加法
    */
-  async add(a: number, b: number): Promise<number> {
+  async add(a: number, b: number): Promise<number> { // 因為要執行loadWasm所以改成async
     if (!this.instance) {
       await this.loadWasm(); // 若尚未載入則先載入
     }

@@ -13,8 +13,7 @@ export class Lesson1Component implements OnInit {
 
   constructor(private wasm: WasmService) {}
 
-  async ngOnInit() {
-    await this.wasm.loadWasm();
+  ngOnInit() {
   }
 
   async calculate() {
