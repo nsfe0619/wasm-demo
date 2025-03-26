@@ -1,0 +1,19 @@
+<h2>📘 Lesson 2 - 區間加總</h2>
+
+<div class="form">
+  <label>
+    數字 A：
+    <input type="number" [(ngModel)]="a" />
+  </label>
+
+  <label>
+    數字 B：
+    <input type="number" [(ngModel)]="b" />
+  </label>
+
+  <button (click)="calculate()">加總區間</button>
+</div>
+
+<div class="result" *ngIf="result !== null">
+  結果：{{ result }}
+</div>
