@@ -8,7 +8,7 @@ WebAssembly (WASM) 是一種 低階二進制格式，可在 瀏覽器與非瀏�
 * 跨平台：可在不同裝置與作業系統上運行。
 * 與 JavaScript 共存：WASM 可由 JavaScript 調用，並與前端框架（如 Angular）整合。
 
-### 程式支援度
+# 程式支援度
 | 語言 | 支援度 | 效能 | 優點 | 缺點 | 適合應用 |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | Rust | ⭐⭐⭐⭐⭐ | 🚀🚀🚀🚀🚀 | 高效能、無 GC、工具完整| 需要學 Rust| 最佳選擇（推薦）| 
@@ -17,24 +17,20 @@ WebAssembly (WASM) 是一種 低階二進制格式，可在 瀏覽器與非瀏�
 | Go| ⭐⭐⭐| 🚀🚀 | 內建 WASM 支援 | 檔案大、效能差	Go| 開發者使用| 
 | Python (Pyodide)| ⭐⭐ | 🚀 |可用 NumPy/Pandas | 速度慢、檔案超大| 數據分析| 
 
-### 環境準備
+# 環境準備
 🔹 目標：安裝 AssemblyScript 並設置 Angular 
 建立 Angular 專案並整合 WebAssembly：
 ```
-ng new angular-wasm-demo --routing --style=scss
-cd angular-wasm-demo
-```
-安裝 AssemblyScript：
-```
-npm install -g assemblyscript
-```
-建立 AssemblyScript 專案：
-```
-npx asinit .
+ng new wasm-demo --routing --style=scss
+cd wasm-demo
 ```
 安裝 WebAssembly 依賴：
 ```
 npm install --save-dev assemblyscript
+```
+初始化 AssemblyScript ：
+```
+npx asinit .
 ```
 
 初始化完以後package.json多了這幾行
