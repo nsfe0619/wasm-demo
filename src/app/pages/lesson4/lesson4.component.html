@@ -1,0 +1,44 @@
+<h2>🧮 記憶型計算機（Memory Calculator）</h2>
+
+<!-- 數值輸入 -->
+<div>
+  <label>主要數值：</label>
+  <input type="number" [(ngModel)]="currentValue" />
+</div>
+
+<div>
+  <label>第二數值：</label>
+  <input type="number" [(ngModel)]="secondValue" />
+</div>
+
+<!-- 第一列：相加與清除 -->
+<div class="actions">
+  <button (click)="sumValues()">➕ 相加</button>
+  <button (click)="clearInputs()">🧽 C 清除</button>
+</div>
+
+<!-- 第二列：pin / read pin / unpin -->
+<div class="actions">
+  <button (click)="storeToMemory()">📌 pin</button>
+  <button (click)="readFromMemory()">📥 read pin</button>
+  <button (click)="clearMemory()">🧷 unpin</button>
+</div>
+
+<!-- new-only 功能 -->
+<div class="actions">
+  <button (click)="storeWithNewOnly()">🆕 new only</button>
+  <button (click)="readWithNewOnly()">👀 read new only</button>
+</div>
+
+
+<!-- 第三列：GC / Reset -->
+<div class="actions">
+  <button (click)="collectGC()">⚙️ 執行 GC</button>
+  <button (click)="reset()">🔄 Reset</button>
+</div>
+
+<!-- 操作紀錄 -->
+<h3>📜 操作紀錄</h3>
+<ul>
+  <li *ngFor="let line of log">{{ line }}</li>
+</ul>

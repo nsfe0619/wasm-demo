@@ -31,6 +31,7 @@ export class WasmService {
       const buffer = await response.arrayBuffer();
       const module = await WebAssembly.instantiate(buffer, imports);
       this.instance = module.instance;
+      console.log('[WASM]instance', this.instance);
       memory = this.instance.exports['memory'] as WebAssembly.Memory;
 
       console.log('[WASM] 模組載入完成');
@@ -110,4 +111,27 @@ export class WasmService {
     return new ImageData(new Uint8ClampedArray(result), imageData.width, imageData.height);
   }
 
+  allocate(buffer: Uint8Array): number {
+    const ptr = (this.instance!.exports['__new'] as CallableFunction)(buffer.length, 0);
+    const memory = this.instance!.exports['memory'] as WebAssembly.Memory;
+    const wasmBytes = new Uint8Array(memory.buffer, ptr, buffer.length);
+    wasmBytes.set(buffer);
+    return ptr;
+  }
+
+  pin(ptr: number): void {
+    (this.instance!.exports['__pin'] as CallableFunction)(ptr);
+  }
+
+  unpin(ptr: number): void {
+    (this.instance!.exports['__unpin'] as CallableFunction)(ptr);
+  }
+
+  collect(): void {
+    (this.instance!.exports['__collect'] as CallableFunction)();
+  }
+
+  getMemory(): WebAssembly.Memory {
+    return this.instance!.exports['memory'] as WebAssembly.Memory;
+  }
 }
