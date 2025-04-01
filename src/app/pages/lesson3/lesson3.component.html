@@ -1,0 +1,34 @@
+<h2>Lesson 3 - 圖片處理 (WASM)</h2>
+
+<input type="file" (change)="onFileSelected($event)" accept="image/*" />
+<br /><br />
+
+<div *ngIf="originalSrc">
+  <h3>原始圖片：</h3>
+  <img [src]="originalSrc" alt="原始圖" width="300" />
+</div>
+
+
+<br />
+<button (click)="processImage()" [disabled]="!imageData">套用灰階轉換</button>
+<button (click)="processImageInJS()" [disabled]="!imageData">使用 Angular 處理灰階</button>
+<button (click)="processInvert()" [disabled]="!imageData">套用反相處理</button>
+<button (click)="restoreOriginal()" [disabled]="!imageData">還原原圖</button>
+
+<h3>亮度調整</h3>
+<input
+  type="range"
+  min="0"
+  max="100"
+  [(ngModel)]="brightnessValue"
+  [disabled]="!imageData"
+  (change)="onBrightnessChange()"
+/>
+<span>{{ brightnessValue }}</span>
+
+<div *ngIf="processedSrc">
+  <h3>處理後圖片：</h3>
+  <img [src]="processedSrc" alt="處理圖" width="300" />
+  <br /><br />
+  <a [href]="processedSrc" download="grayscale.png">下載圖片</a>
+</div>

@@ -1,5 +1,9 @@
 {
   "entry": "assembly/index.ts",
+  "options": {
+    "exportRuntime": true,
+    "importMemory": false
+  },
   "targets": {
     "release": {
       "outFile": "../src/assets/add.wasm",
